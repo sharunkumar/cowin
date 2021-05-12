@@ -1,5 +1,5 @@
-const poller = require("./poller")
+const logger = require("./logger")
 
-console.clear()
+logger.info("program started")
 
-poller()
+require("./poller")()

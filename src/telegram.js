@@ -1,5 +1,5 @@
-const Configuration = require('./configuration')
 const bot = require('node-telegram-bot-api')
+const Configuration = require('./configuration')
 
 class Telegram {
     constructor() {
