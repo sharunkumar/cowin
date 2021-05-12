@@ -1,0 +1,19 @@
+{
+  "name": "cowin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node src/main",
+    "dev": "nodemon main"
+  },
+  "author": "sharunkumar",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "node-telegram-bot-api": "^0.53.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
