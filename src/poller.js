@@ -42,8 +42,9 @@ const poll = () => {
 						innerText = innerText +
 							`- date: ${s.date}\n` +
 							`- available: ${s.available_capacity}\n` +
-							`- min age: ${s.min_age_limit}\n` +
-							`- vaccine: ${s.vaccine}\n`
+							`- age: ${s.min_age_limit}+\n` +
+							`- vaccine: ${s.vaccine}\n` +
+							`\nhttps://selfregistration.cowin.gov.in`
 					})
 				}
 				
