@@ -43,8 +43,7 @@ const poll = () => {
 							`- date: ${s.date}\n` +
 							`- available: ${s.available_capacity}\n` +
 							`- age: ${s.min_age_limit}+\n` +
-							`- vaccine: ${s.vaccine}\n` +
-							`\nhttps://selfregistration.cowin.gov.in`
+							`- vaccine: ${s.vaccine}\n`
 					})
 				}
 				
@@ -60,8 +59,9 @@ const poll = () => {
 			text = text.trim()
 
 			if (text !== '') {
-				logger.info(`sending to telegram\n${text}`)
+				text += "\nhttps://selfregistration.cowin.gov.in"
 				telegram.sendText(text)
+				logger.info(`sent to telegram\n${text}`)
 			}
 		}
 	}).catch(err => {
