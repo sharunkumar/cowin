@@ -19,8 +19,7 @@ readline.question("enter telegram bot token: ", bot_token => {
         if (fs.existsSync(config_file)) {
             let existing_config = fs.readFileSync(config_file)
             readline.question(`${config_file} already exists with the following configuration:\n${existing_config}\noverwrite existing config? (y/n): `, confirmation => {
-                confirmation = confirmation.toLowerCase()
-                if (confirmation === "yes" || confirmation == "y") {
+                if (["yes", "y"].includes(confirmation.toLowerCase())) {
                     writeConfig()
                     readline.close()
                 } else {

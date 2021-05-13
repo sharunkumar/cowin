@@ -20,7 +20,6 @@ const poll = () => {
 	
 	blacklist = config.readConfig().blacklist
 	
-	const timestamp = new Date()
 	axios.get(url).then(res => {
 		centers = res.data.centers.filter(c => !blacklist.includes(c.name) & c.sessions.some(sesh => sesh.available_capacity > 0))
 		
