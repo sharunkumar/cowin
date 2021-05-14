@@ -7,7 +7,7 @@ const logger = require('./logger')
 class PollManager {
 	constructor() {
 		this.config = new Configuration('config.json')
-		this.sent_sessions = [] // for preventing processing of the same session again
+		this.sent_sessions = {} // for preventing processing of the same session again
 		this.poll_interval = 10
 		this.poll_multiple = () => {
 			if (this.config.readConfig().districts.length > 0) {
@@ -46,14 +46,14 @@ class PollManager {
 					centers.forEach(c => {
 
 						let innerText = ''
-						c.sessions = c.sessions.filter(s => s.available_capacity > 0 & !this.sent_sessions.includes(s.session_id))
+						c.sessions = c.sessions.filter(s => s.available_capacity > 0 & !(s.session_id in this.sent_sessions))
 
 						if (c.sessions.length > 0) {
 							c.sessions.forEach(s => {
-								this.sent_sessions.push(s.session_id)
+								this.sent_sessions[s.session_id] = 1
 								setTimeout(() => {
 									// remove the id from sent sessions after 1 min
-									this.sent_sessions = this.sent_sessions.filter(sent => sent.session_id !== s.session_id)
+									delete this.sent_sessions[s.session_id]
 								}, 1 * 60 * 1000);
 								innerText = innerText +
 									`- date: ${s.date}\n` +
