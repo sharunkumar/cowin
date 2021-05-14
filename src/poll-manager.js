@@ -68,14 +68,14 @@ class PollManager {
 						if (innerText !== '') {
 							text = text +
 								`${c.name} \`${c.pincode}\` [directions](https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.name)})\n` +
-								`${innerText}\n`
+								`${innerText}\n\n`
 						}
 					})
 
 					text = text.trim()
 
 					if (text !== '') {
-						text += "\nhttps://selfregistration.cowin.gov.in"
+						text += "\n\nhttps://selfregistration.cowin.gov.in"
 						telegram.sendText(text)
 						logger.info(`sent to telegram\n${text}`)
 					}

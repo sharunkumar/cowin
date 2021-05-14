@@ -15,7 +15,7 @@ class Configuration {
                 this.telegram_group_id = data['telegram_group_id']
                 this.districts = data['districts']
             } catch(err) {
-                console.warn('error while readng config', err)
+                console.warn('error while reading config', err)
             }
             return this
         }
