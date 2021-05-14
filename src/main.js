@@ -2,4 +2,4 @@ const logger = require("./logger")
 
 logger.info("program started")
 
-require("./poller")()
+require("./poll-manager").start_polling()
