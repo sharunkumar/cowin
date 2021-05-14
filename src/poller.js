@@ -8,10 +8,10 @@ let sent_sessions = [] // for preventing processing of the same session again
 
 const config = new Configuration('config.json')
 
-const poll = () => {
+const poll = (district_id) => {
 	logger.info("polling")
 	
-	const url = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=303&date=${date.format(new Date(), 'DD-MM-YYYY')}`
+	const url = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${district_id}&date=${date.format(new Date(), 'DD-MM-YYYY')}`
 	
 	axios.defaults.headers.common['user-agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
 	axios.defaults.headers.common['accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
@@ -71,9 +71,9 @@ const poll = () => {
 };
 
 const poller = () => {
-	poll()
+	poll(303)
 	setInterval(() => {
-		poll()
+		poll(303)
 	}, 10 * 1000);
 };
 
