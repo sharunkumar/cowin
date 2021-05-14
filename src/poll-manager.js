@@ -8,26 +8,37 @@ class PollManager {
 	constructor() {
 		this.config = new Configuration('config.json')
 		this.sent_sessions = [] // for preventing processing of the same session again
+		this.poll_interval = 10
+		this.poll_multiple = () => {
+			if (this.config.readConfig().districts.length > 0) {
+				const delta = this.poll_interval * 1000 / this.config.districts.length
+
+				this.config.districts.forEach((district, idx) => {
+					setTimeout(() => {
+						this.poll(district)
+					}, idx * delta);
+				})
+
+			} else {
+				logger.warn("no districts in config!")
+			}
+		}
 		this.start_polling = () => {
-			this.poll(303)
+			this.poll_multiple()
 			setInterval(() => {
-				this.poll(303)
-			}, 10 * 1000);
+				this.poll_multiple()
+			}, this.poll_interval * 1000);
 		}
 		this.poll = (district_id) => {
-			logger.info("polling")
+			logger.info(`polling for district_id ${district_id}`)
 
 			const url = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${district_id}&date=${date.format(new Date(), 'DD-MM-YYYY')}`
 
 			axios.defaults.headers.common['user-agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
 			axios.defaults.headers.common['accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
 
-			let blacklist = []
-
-			blacklist = this.config.readConfig().blacklist
-
 			axios.get(url).then(res => {
-				let centers = res.data.centers.filter(c => !blacklist.includes(c.name) & c.sessions.some(sesh => sesh.available_capacity > 0))
+				let centers = res.data.centers.filter(c => !this.config.readConfig().blacklist.includes(c.name) & c.sessions.some(sesh => sesh.available_capacity > 0))
 
 				if (centers.length > 0) {
 					let text = ''
@@ -76,7 +87,5 @@ class PollManager {
 		}
 	}
 }
-
-
 
 module.exports = new PollManager()

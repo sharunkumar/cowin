@@ -5,6 +5,7 @@ class Configuration {
         this.blacklist = []
         this.telegram_bot_token = ''
         this.telegram_group_id = ''
+        this.districts = []
         this.readConfig = () => {
             // for refreshing the config when needed
             try {
@@ -12,6 +13,7 @@ class Configuration {
                 this.blacklist = data['blacklist']
                 this.telegram_bot_token = data['telegram_bot_token']
                 this.telegram_group_id = data['telegram_group_id']
+                this.districts = data['districts']
             } catch(err) {
                 console.warn('error while readng config', err)
             }
