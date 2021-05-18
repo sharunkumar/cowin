@@ -50,13 +50,13 @@ class PollManager {
 
 						if (c.sessions.length > 0) {
 							c.sessions.forEach(s => {
-								this.sent_sessions[s.session_id] = 1
+								this.sent_sessions[s.session_id] = s.available_capacity
 								setTimeout(() => {
-									// remove the id from sent sessions after 1 min
+									// remove the id from sent sessions after 5 min
 									logger.info(`deleting ${s.session_id} from sent`)
 									delete this.sent_sessions[s.session_id]
 									logger.info(this.sent_sessions)
-								}, 1 * 60 * 1000);
+								}, 5 * 60 * 1000);
 								innerText = innerText +
 									`- date: ${s.date}\n` +
 									`- available: ${s.available_capacity}\n` +
