@@ -53,7 +53,9 @@ class PollManager {
 								this.sent_sessions[s.session_id] = 1
 								setTimeout(() => {
 									// remove the id from sent sessions after 1 min
+									logger.info(`deleting ${s.session_id} from sent`)
 									delete this.sent_sessions[s.session_id]
+									logger.info(this.sent_sessions)
 								}, 1 * 60 * 1000);
 								innerText = innerText +
 									`- date: ${s.date}\n` +
