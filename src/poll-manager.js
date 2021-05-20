@@ -46,7 +46,7 @@ class PollManager {
 					centers.forEach(c => {
 
 						let innerText = ''
-						c.sessions = c.sessions.filter(s => s.available_capacity > 0 & !(s.session_id in this.sent_sessions))
+						c.sessions = c.sessions.filter(s => s.available_capacity > 0 & !(s.session_id in this.sent_sessions) & (district_id in this.config.district_age ? this.config.district_age[district_id] == s.min_age_limit : true))
 
 						if (c.sessions.length > 0) {
 							c.sessions.forEach(s => {

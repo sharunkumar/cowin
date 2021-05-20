@@ -12,6 +12,7 @@ readline.question("enter telegram bot token: ", bot_token => {
             let configuration = {
                 "blacklist": [],
                 "districts": districts,
+                "district_age": {},
                 "telegram_bot_token": bot_token,
                 "telegram_group_id": group_id
             }
