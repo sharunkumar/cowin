@@ -3,7 +3,7 @@ const Configuration = require('./configuration')
 
 class Telegram {
     constructor() {
-        this.config = new Configuration('config.json')
+        this.config = new Configuration()
         this.bot = new bot(this.config.readConfig().telegram_bot_token)
         this.sendText = (text) => {
             try {
