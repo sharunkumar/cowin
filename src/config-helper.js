@@ -15,12 +15,13 @@ readline.question("enter telegram bot token: ", bot_token => {
                 "districts": districts,
                 "district_age": {},
                 "telegram_bot_token": bot_token,
-                "telegram_group_id": group_id
+                "telegram_group_id": Number(group_id)
             }
 
             const writeConfig = () => {
-                console.log(configuration)
-                fs.writeFileSync(config_file, YAML.stringify(configuration))
+                const cfg = YAML.stringify(configuration)
+                console.log(cfg)
+                fs.writeFileSync(config_file, cfg)
             }
 
             if (fs.existsSync(config_file)) {
