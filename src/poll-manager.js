@@ -83,8 +83,8 @@ class PollManager {
 					}
 				}
 			}).catch(err => {
-				logger.warn("ERROR")
-				logger.warn(err)
+				logger.error("ERROR")
+				logger.error(err)
 			})
 		}
 	}

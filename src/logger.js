@@ -16,6 +16,7 @@ class AndroidLogger {
         this.info = message => { if (this.supported) { exec(`/system/bin/log -p i -t ${this.tag} '${message}'`) } }
         this.warn = message => { if (this.supported) { exec(`/system/bin/log -p w -t ${this.tag} '${message}'`) } }
         this.debug = message => { if (this.supported) { exec(`/system/bin/log -p d -t ${this.tag} '${message}'`) } }
+        this.error = message => { if (this.supported) { exec(`/system/bin/log -p e -t ${this.tag} '${message}'`) } }
     }
 }
 
@@ -29,6 +30,7 @@ class Logger {
         this.info = object => { console.info(getdate(), object), this.android?.info(object) }
         this.warn = object => { console.warn(getdate(), object), this.android?.warn(object) }
         this.debug = object => { console.debug(getdate(), object), this.android?.debug(object) }
+        this.error = object => { console.error(getdate(), object), this.android?.error(object) }
     }
 }
 

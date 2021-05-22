@@ -19,7 +19,7 @@ class Configuration {
                 this.districts = data['districts']
                 this.district_age = data['district_age']
             } catch(err) {
-                console.warn('error while reading config', err)
+                console.error('error while reading config', err)
             }
             return this
         }

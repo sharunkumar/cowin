@@ -12,7 +12,8 @@ class Telegram {
                     , "disable_web_page_preview": true
                 })
             } catch (err) {
-                console.warn('error while sendText', err)
+                console.error('Telegram: error while sending text')
+                console.error(err)
             }
             
         } 
