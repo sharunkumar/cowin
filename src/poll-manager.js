@@ -83,7 +83,6 @@ class PollManager {
 					}
 				}
 			}).catch(err => {
-				logger.error("ERROR")
 				logger.error(err)
 			})
 		}
