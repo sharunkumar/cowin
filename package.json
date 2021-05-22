@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "date-and-time": "^1.0.0",
     "node-telegram-bot-api": "^0.53.0",
+    "promise": "^8.1.0",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
