@@ -5,9 +5,9 @@ class Telegram {
     constructor() {
         this.config = new Configuration()
         this.bot = new bot(this.config.readConfig().telegram_bot_token)
-        this.sendText = (text) => {
+        this.sendText = (text, override_group=undefined) => {
             try {
-                this.bot.sendMessage(this.config.readConfig().telegram_group_id, text, {
+                this.bot.sendMessage(override_group || this.config.readConfig().telegram_group_id, text, {
                     "parse_mode": "Markdown"
                     , "disable_web_page_preview": true
                 })

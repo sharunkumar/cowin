@@ -9,6 +9,7 @@ class Configuration {
         this.telegram_group_id = ''
         this.districts = []
         this.district_age = {}
+        this.district_group = {}
         this.readConfig = () => {
             // for refreshing the config when needed
             try {
@@ -18,6 +19,7 @@ class Configuration {
                 this.telegram_group_id = data['telegram_group_id']
                 this.districts = data['districts']
                 this.district_age = data['district_age']
+                this.district_group = data['district_group']
             } catch(err) {
                 console.error('error while reading config', err)
             }

@@ -17,7 +17,9 @@ main = async () => {
         const group_id = Number(await getInput("enter telegram group/channel id: "))
         const districts = (await getInput("enter district id(s) [separate with commas]: ")).split(",").map(dist => parseInt(dist.trim())).filter(d => d != NaN)
 
+        const blacklist = []
         const district_age = {}
+        const district_group = {}
 
         for (const district_id of districts) {
             let age_filter = await getInput(`(optional) enter age filter for district id ${district_id} (18/45): `)
@@ -28,9 +30,10 @@ main = async () => {
         }
 
         const configuration = {
-            "blacklist": [],
+            "blacklist": blacklist,
             "districts": districts,
             "district_age": district_age,
+            "district_group": district_group,
             "telegram_bot_token": bot_token,
             "telegram_group_id": group_id
         }
