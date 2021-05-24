@@ -20,6 +20,7 @@ main = async () => {
         const blacklist = []
         const district_age = {}
         const district_group = {}
+        const district_dose = {}
 
         for (const district_id of districts) {
             let age_filter = await getInput(`(optional) enter age filter for district id ${district_id} (18/45): `)
@@ -34,6 +35,7 @@ main = async () => {
             "districts": districts,
             "district_age": district_age,
             "district_group": district_group,
+            "district_dose": district_dose,
             "telegram_bot_token": bot_token,
             "telegram_group_id": group_id
         }
