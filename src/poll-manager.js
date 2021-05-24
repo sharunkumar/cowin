@@ -60,6 +60,8 @@ class PollManager {
 								innerText = innerText +
 									`- date: ${s.date}\n` +
 									`- available: ${s.available_capacity}\n` +
+									`- dose 1: ${s.available_capacity_dose1}\n` +
+									`- dose 2: ${s.available_capacity_dose2}\n` +
 									`- age: ${s.min_age_limit}+\n` +
 									`- vaccine: ${s.vaccine}\n`
 							})
