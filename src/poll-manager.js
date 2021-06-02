@@ -77,7 +77,7 @@ class PollManager {
 
 						if (innerText !== '') {
 							text = text +
-								`${c.name} \`${c.pincode}\` [directions](https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.name.replace(/(covaxin|covishield)/gi, "").trim())})\n` +
+								`${c.name} \`${c.pincode}\` [directions](https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.name.replace(/(covaxin|covishield)/gi, "").replace(/\(/g, " ").replace(/\)/g, " ").trim())})\n` +
 								`${innerText}\n\n`
 						}
 					})
