@@ -63,6 +63,7 @@ class PollManager {
 									logger.info(this.sent_sessions)
 								}, 5 * 60 * 1000);
 								innerText = innerText +
+									`--- \n` +
 									`- date: ${s.date}\n` +
 									`- available: ${s.available_capacity}\n` +
 									`- dose 1: ${s.available_capacity_dose1}\n` +

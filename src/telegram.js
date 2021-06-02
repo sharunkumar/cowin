@@ -13,7 +13,7 @@ class Telegram {
                 })
             } catch (err) {
                 console.error('Telegram: error while sending text')
-                console.error(err)
+                console.error(err.toString())
             }
             
         } 
