@@ -8,7 +8,7 @@ class PollManager {
 	constructor() {
 		this.config = new Configuration()
 		this.sent_sessions = {} // for preventing processing of the same session again
-		this.poll_interval = 10
+		this.poll_interval = 2
 		this.poll_multiple = () => {
 			if (this.config.readConfig().districts.length > 0) {
 				const delta = this.poll_interval * 1000 / this.config.districts.length
