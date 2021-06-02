@@ -90,7 +90,7 @@ class PollManager {
 					}
 				}
 			}).catch(err => {
-				logger.error(err)
+				logger.error(err.toString())
 			})
 		}
 	}

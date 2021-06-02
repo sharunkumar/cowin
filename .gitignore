@@ -6,5 +6,6 @@ npm-debug.log
 package-lock.json
 test/*.log
 .vscode
-config.json
-config.yml
+*config.json
+*config.yml
+*.json
