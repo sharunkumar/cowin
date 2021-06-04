@@ -87,7 +87,6 @@ class PollManager {
 					if (text !== '') {
 						text += "\n\nhttps://selfregistration.cowin.gov.in"
 						telegram.sendText(text, this.config.readConfig().district_group[district_id])
-						logger.info(`sent to telegram\n${text}`)
 					}
 				}
 			}).catch(err => {
