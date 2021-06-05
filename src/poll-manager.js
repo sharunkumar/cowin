@@ -7,7 +7,11 @@ const logger = require('./logger')
 class PollManager {
 	constructor() {
 		this.config = new Configuration()
-		this.sent_sessions = {} // for preventing processing of the same session again
+		this.sent_sessions = new (class SentSessions {
+			toString() {
+				return JSON.stringify(this, undefined, 2)
+			}
+		}) // for preventing processing of the same session again
 		this.poll_interval = 2
 		this.poll_multiple = () => {
 			if (this.config.readConfig().districts.length > 0) {
@@ -71,6 +75,7 @@ class PollManager {
 									`- age: ${s.min_age_limit}+\n` +
 									`- vaccine: ${s.vaccine}\n`
 							})
+							logger.info(this.sent_sessions)
 						}
 
 						innerText = innerText.trim()
