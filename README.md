@@ -13,5 +13,11 @@ git clone git@github.com:sharunkumar/cowin.git
 cd cowin
 npm install
 ```
-2. Generate a config file. Run the following: `npm run config`
-3. Once the config file is generated, you can run the bot using `npm start`
+2. Generate a config file. Run the following: 
+```
+npm run config
+```
+3. Once the config file is generated, you can run the bot using
+```
+npm start
+```
