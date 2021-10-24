@@ -11,6 +11,7 @@ class Configuration {
         this.district_age = {}
         this.district_group = {}
         this.district_dose = {}
+        this.free_districts = []
         this.readConfig = () => {
             // for refreshing the config when needed
             try {
@@ -22,6 +23,7 @@ class Configuration {
                 this.district_age = data['district_age']
                 this.district_group = data['district_group']
                 this.district_dose = data['district_dose']
+                this.free_districts = data['free_districts']
             } catch(err) {
                 console.error('error while reading config', err)
             }

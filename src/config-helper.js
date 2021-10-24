@@ -21,6 +21,7 @@ main = async () => {
         const district_age = {}
         const district_group = {}
         const district_dose = {}
+        const free_districts = []
 
         for (const district_id of districts) {
             let age_filter = await getInput(`(optional) enter age filter for district id ${district_id} (18/45): `)
@@ -37,7 +38,8 @@ main = async () => {
             "district_group": district_group,
             "district_dose": district_dose,
             "telegram_bot_token": bot_token,
-            "telegram_group_id": group_id
+            "telegram_group_id": group_id,
+            "free_districts": free_districts,
         }
 
         const writeConfig = () => {

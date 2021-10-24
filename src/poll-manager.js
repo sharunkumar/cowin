@@ -44,6 +44,10 @@ class PollManager {
 			axios.get(url).then(res => {
 				let centers = res.data.centers.filter(c => !this.config.readConfig().blacklist.includes(c.name) & c.sessions.some(sesh => sesh.available_capacity > 0))
 
+				if(this.config.free_districts.includes(district_id)){
+					centers = centers.filter(c => c.fee_type == "Free")
+				}
+
 				if (centers.length > 0) {
 					let text = ''
 
@@ -73,7 +77,8 @@ class PollManager {
 									`- dose 1: ${s.available_capacity_dose1}\n` +
 									`- dose 2: ${s.available_capacity_dose2}\n` +
 									`- age: ${s.min_age_limit}+\n` +
-									`- vaccine: ${s.vaccine}\n`
+									`- vaccine: ${s.vaccine}\n` +
+									`- fee type: ${c.fee_type}\n`
 							})
 							logger.info(this.sent_sessions)
 						}
